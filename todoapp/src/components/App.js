@@ -15,7 +15,7 @@ const ListItem = props => {
       <span style={styles.text}>
         {props.text}
       </span>
-      <span className="pull-right pointer">-</span>
+      <span className="pull-right pointer" onClick={() => props.remove(props.text)}>-</span>
     </div>
   );
 };
@@ -29,12 +29,18 @@ class App extends React.Component {
     };
 
     this.updateList = this.updateList.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   updateList(item) {
     const newList = [...this.state.list, item];
     this.setState(() => ({ list: newList }));
     console.log(this.state.list);
+  }
+
+  removeItem(value){
+    const newList = this.state.list.filter(item => item !== value)
+    this.setState(() => ({list: newList}))
   }
 
   render() {
