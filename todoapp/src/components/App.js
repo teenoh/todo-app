@@ -25,6 +25,8 @@ class App extends React.Component {
     this.state = {
       list: []
     };
+
+    this.updateList = this.updateList.bind(this)
   }
 
   updateList(item) {
@@ -39,7 +41,7 @@ class App extends React.Component {
         <center className="row">
           <h3>TO DO LIST APP</h3>
           <br />
-          <Search />
+          <Search updateList={this.updateList}/>
         </center>
         <br />
 
