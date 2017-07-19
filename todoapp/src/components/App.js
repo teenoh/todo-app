@@ -1,29 +1,54 @@
-import React from 'react'
+import React from "react";
+import PropTypes from "prop-types";
+import Search from "./Search";
+
+const styles = {
+  text: {
+    margin: "0px 16px"
+  }
+};
+
+const ListItem = props => {
+  return (
+    <div className="list-group-item row">
+      <span className="pull-left pointer">+</span>
+      <span style={styles.text}>I want to go to banana island</span>
+      <span className="pull-right pointer">-</span>
+    </div>
+  );
+};
 
 class App extends React.Component {
-    render() {
-        return ( 
-            <div className="container-fluid col-md-4 col-md-offset-4">
-        <center className="row">
-            <h3>TO DO LIST APP</h3>
-            <br/>
-            <form>
-                <input id="input" type="text" />
-                <input type="submit" style="margin-left: -5px"/>
-            </form>
-        </center>
-        <br/>
-        <div className="list-group">
-            <div className="list-group-item row">
-                <span className="pull-left pointer">+</span>
-                <span style="margin: 0px 16px;">I want to go to banana island</span>
-                <span className="pull-right pointer">-</span>
-            </div>
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      list: []
+    };
+  }
+
+  updateList(item) {
+    const newList = [...this.state.list];
+    newList = newList.push(item);
+    this.setState(() => ({ list: newList }));
+  }
+
+  render() {
+    return (
+      <div className="container-fluid col-md-4 col-md-offset-4">
+        <center className="row">
+          <h3>TO DO LIST APP</h3>
+          <br />
+          <Search />
+        </center>
+        <br />
+
+        <div className="list-group">
+          <ListItem />
         </div>
-    </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
-export default App
+export default App;
