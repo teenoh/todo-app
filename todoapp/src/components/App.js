@@ -8,7 +8,7 @@ const styles = {
   }
 };
 
-const ListItem = props => {
+const ListItem = (props) => {
   return (
     <div className="list-group-item row">
       <span className="pull-left pointer">+</span>
@@ -30,9 +30,9 @@ class App extends React.Component {
   }
 
   updateList(item) {
-    const newList = [...this.state.list];
-    newList = newList.push(item);
+    const newList = [...this.state.list, item];
     this.setState(() => ({ list: newList }));
+    console.log(this.state.list)
   }
 
   render() {

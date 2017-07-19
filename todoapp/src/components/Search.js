@@ -15,16 +15,19 @@ class Search extends React.Component {
       input: ""
     };
 
-    handleChange = this.handleChange.bind(this)
-    handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    this.setState(() => ({ input: e.target.value }));
+    this.setState({ input: e.target.value });
   }
 
-  handleSubmit(){
-
+  handleSubmit(e) {
+    e.preventDefault();
+    const item = this.state.input;
+    this.props.updateList(item);
+    console.log(item);
   }
 
   render() {
@@ -36,5 +39,9 @@ class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  updateList: PropTypes.func.isRequired
+};
 
 export default Search;
