@@ -12,17 +12,15 @@ const styles = {
     marginTop: 16
   },
   div: {
-    display: "inline"
+    display: "inline",
+    marginRight: 8
   }
 };
 
 const ListItem = props => {
   return (
     <div className="row list-group-item">
-      <div className="col-xs-1 pointer" style={styles.div}>
-        +
-      </div>
-      <div className="col-xs-8 clearfix" >
+      <div className="col-xs-10 clearfix" style={styles.div} >
         {props.text}
       </div>
       <div
@@ -47,8 +45,10 @@ class App extends React.Component {
   }
 
   updateList(item) {
-    const newList = [...this.state.list, item];
-    this.setState(() => ({ list: newList }));
+    if (item !== ""){
+      const newList = [...this.state.list, item];
+      this.setState(() => ({ list: newList }));
+    }
     console.log(this.state.list);
   }
 

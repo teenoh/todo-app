@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const styles = {
-  submitBtn: {
-    marginLeft: "-3px"
-  }
-};
 
 class Search extends React.Component {
   constructor(props) {
