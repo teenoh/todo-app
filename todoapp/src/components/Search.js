@@ -32,9 +32,9 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input id="input" onChange={this.handleChange} type="text" />
-        <input type="submit" style={styles.submitBtn} />
+      <form className="form-group" onSubmit={this.handleSubmit}>
+        <input id="input" className="form-control" onChange={this.handleChange} type="text" />
+        <input type="submit" className="btn btn-info"/>
       </form>
     );
   }

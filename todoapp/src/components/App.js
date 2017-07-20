@@ -1,22 +1,36 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Search from "./Search";
 
 const styles = {
   text: {
-    margin: "0px 16px"
+    margin: "0px 8px"
+  },
+  listItems: {
+    margin: "0px 5px"
+  },
+  top: {
+    marginTop: 16
+  },
+  div: {
+    display: "inline"
   }
 };
 
 const ListItem = props => {
   return (
-    <div className="list-group-item row">
-      <span className="pull-left pointer">+</span>
-      <span style={styles.text}>
+    <div className="row list-group-item">
+      <div className="col-xs-1 pointer" style={styles.div}>
+        +
+      </div>
+      <div className="col-xs-8 clearfix" >
         {props.text}
-      </span>
-      <span className="pull-right pointer" onClick={() => props.remove(props.text)}>-</span>
-    </div>
+      </div>
+      <div
+        className="col-xs-1 pull-right pointer"
+        style={styles.div}
+        onClick={() => props.remove(props.text)}>
+        -</div>
+        </div>
   );
 };
 
@@ -38,21 +52,21 @@ class App extends React.Component {
     console.log(this.state.list);
   }
 
-  removeItem(value){
-    const newList = this.state.list.filter(item => item !== value)
-    this.setState(() => ({list: newList}))
+  removeItem(value) {
+    const newList = this.state.list.filter(item => item !== value);
+    this.setState(() => ({ list: newList }));
   }
 
   render() {
     return (
-      <div className="container-fluid col-md-4 col-md-offset-4">
+      <div className="col-xs-offset-2 col-xs-8 well" style={styles.top}>
         <center className="row">
           <h3>TO DO LIST APP</h3>
           <br />
           <Search updateList={this.updateList} />
-        </center>
-        <br />
 
+          <br />
+        </center>
         <div className="list-group">
           {this.state.list !== [] &&
             this.state.list.map((item, index) =>
